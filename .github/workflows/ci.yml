@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22.x'
+
+      - name: Cache dependencies
+        uses: ./.github/workflows/node-cache.yml
+
+      - name: Run ESLint and generate report
+        run: npm run lint
+
+      - name: Run Prettier check
+        run: npm run prettier
+
+      - name: Run npm audit and generate report
+        run: npm run audit
+
+      - name: Upload ESLint report
+        uses: actions/upload-artifact@v2
+        with:
+          name: eslint-report
+          path: lint-report.json
+
+      - name: Upload Audit report
+        uses: actions/upload-artifact@v2
+        with:
+          name: audit-report
+          path: audit-report.json
+
+      - name: Generate build
+        run: npm run build
+
+      # - name: Run tests
+      #   run: npm test
+
+      - name: Upload build results
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-results
+          path: dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: ./.github/workflows/node-cache.yml
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
