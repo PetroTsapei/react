@@ -34,13 +34,13 @@ jobs:
         run: npm run audit
 
       - name: Upload ESLint report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: eslint-report
           path: lint-report.json
 
       - name: Upload Audit report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: audit-report
           path: audit-report.json
@@ -52,7 +52,7 @@ jobs:
       #   run: npm test
 
       - name: Upload build results
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: build-results
           path: dist
