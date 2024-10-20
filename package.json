@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint src --format html --output-file lint-report.html",
+    "lint": "eslint src",
     "prettier": "prettier --check src",
     "prettier:fix": "prettier --write src",
     "audit": "npm audit --json > audit-report.json",
