@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "check-circular": "npx --yes madge --circular --extensions ts,tsx src",
     "lint": "eslint src && npm run check-circular",
     "lint:report": "eslint --format json --output-file lint-report.json src",
