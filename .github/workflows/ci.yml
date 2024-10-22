@@ -65,8 +65,8 @@ jobs:
         with:
           name: eslint-report
 
-      - name: Fix ESLint report
-        run: sed -i 's+/home/runner/work/***+/github/workspace+g' lint-report.json
+      - name: Fix ESLint report to be relative
+        run: sed -i '' 's|"/home/runner/work/react/react/|\"./|g' lint-report.json
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v2.3.0
