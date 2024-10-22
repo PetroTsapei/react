@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint and generate report
-        run: npm run lint
+        run: npm run lint:report
 
       - name: Run Prettier check
         run: npm run prettier
@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: eslint-report
-          path: lint-report.html
+          path: lint-report.json
 
       - name: Upload Audit report
         uses: actions/upload-artifact@v4
@@ -49,3 +49,9 @@ jobs:
 
       # - name: Run tests
       #   run: npm test
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v2.3.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
