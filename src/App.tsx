@@ -8,10 +8,7 @@ function App() {
   const a = 1;
 
   try {
-
-  } catch (error) {
-
-  }
+  } catch (error) {}
 
   return (
     <>
