@@ -7,6 +7,12 @@ function App() {
   const [count, setCount] = useState(0);
   const a = 1;
 
+  try {
+
+  } catch (error) {
+
+  }
+
   return (
     <>
       <div>
