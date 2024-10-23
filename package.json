@@ -11,7 +11,8 @@
     "lint:report": "eslint --format json --output-file lint-report.json src",
     "prettier": "prettier --check src",
     "prettier:fix": "prettier --write src",
-    "audit": "npm audit --json > audit-report.json",
+    "audit:fix": "npm audit fix",
+    "audit:report": "npm audit --json > audit-report.json",
     "preview": "vite preview",
     "prepare": "husky"
   },
