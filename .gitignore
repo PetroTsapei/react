@@ -26,5 +26,5 @@ dist-ssr
 # Ignore artifacts:
 build
 coverage
-lint-report.html
+lint-report.json
 audit-report.json
