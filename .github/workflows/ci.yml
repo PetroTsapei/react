@@ -96,12 +96,12 @@ jobs:
         uses: snyk/actions/setup@master
 
       - name: Snyk Code test
-        run: snyk code test --sarif > snyk-code.sarif -d || true
+        run: snyk code test --sarif > snyk-code.sarif || true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk Open Source monitor
-        run: snyk monitor --all-projects -d
+        run: snyk monitor --all-projects
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
