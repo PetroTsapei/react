@@ -63,7 +63,7 @@ jobs:
           name: coverage
 
       - name: Check
-        run: ls coverage
+        run: ls
 
       - name: Download ESLint report
         uses: actions/download-artifact@v4
