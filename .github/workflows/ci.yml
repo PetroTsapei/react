@@ -62,6 +62,9 @@ jobs:
         with:
           name: coverage
 
+      - name: Check
+        run: ls coverage
+
       - name: Download ESLint report
         uses: actions/download-artifact@v4
         with:
