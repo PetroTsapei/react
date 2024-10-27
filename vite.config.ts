@@ -8,7 +8,7 @@ export default defineConfig({
   base: '/react/',
   test: {
     environment: 'happy-dom',
-    setupFiles: ['./src/vitest.setup.ts'],
+    setupFiles: ['vitest.setup.ts'],
     coverage: {
       include: ['src'],
       reporter: ['text', 'lcov'],
