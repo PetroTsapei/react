@@ -7,6 +7,8 @@ export default defineConfig({
   plugins: [react()],
   base: '/react/',
   test: {
+    environment: 'happy-dom',
+    setupFiles: ['./src/vitest.setup.ts'],
     coverage: {
       include: ['src'],
       reporter: ['text', 'lcov'],
